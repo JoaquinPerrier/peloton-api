@@ -2,7 +2,7 @@ import { getDocs, collection, query, where, addDoc, deleteDoc, doc } from 'fireb
 import { db } from '../utils/firebase';
 
 exports.findRaces = async function (): Promise<any> {
-	const q = query(collection(db, 'race'));
+	const q = query(collection(db, 'races'));
 	const raceQuery = await getDocs(q);
 
 	if (!raceQuery.empty) {

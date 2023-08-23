@@ -13,7 +13,7 @@ const firestore_1 = require("firebase/firestore");
 const firebase_1 = require("../utils/firebase");
 exports.findRaces = function () {
     return __awaiter(this, void 0, void 0, function* () {
-        const q = (0, firestore_1.query)((0, firestore_1.collection)(firebase_1.db, 'race'));
+        const q = (0, firestore_1.query)((0, firestore_1.collection)(firebase_1.db, 'races'));
         const raceQuery = yield (0, firestore_1.getDocs)(q);
         if (!raceQuery.empty) {
             const race = raceQuery.docs.map(race => (Object.assign({}, race.data())));

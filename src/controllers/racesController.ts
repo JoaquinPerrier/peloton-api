@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-const raceModel = require('../models/raceModel');
+const racesModel = require('../models/racesModel');
 const jwtUtil = require('../utils/jwt/index');
 
 exports.find_races = async (req: Request, res: Response) => {
@@ -11,7 +11,7 @@ exports.find_races = async (req: Request, res: Response) => {
 			throw Error(userToken.message);
 		}
 
-		let races = await raceModel.findRaces();
+		let races = await racesModel.findRaces();
 
 		if (races) {
 			res.status(200).send({ message: 'Status OK', data: { races: races } });

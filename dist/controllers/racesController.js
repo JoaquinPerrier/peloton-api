@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const raceModel = require('../models/raceModel');
+const racesModel = require('../models/racesModel');
 const jwtUtil = require('../utils/jwt/index');
 exports.find_races = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -17,7 +17,7 @@ exports.find_races = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         if (userToken.message) {
             throw Error(userToken.message);
         }
-        let races = yield raceModel.findRaces();
+        let races = yield racesModel.findRaces();
         if (races) {
             res.status(200).send({ message: 'Status OK', data: { races: races } });
         }
