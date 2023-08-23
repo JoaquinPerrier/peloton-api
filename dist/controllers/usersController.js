@@ -34,10 +34,6 @@ exports.login = function (req, res) {
     });
 };
 /*
-exports.user_detail = function (req: Request, res: Response) {
-    res.status(501).send({ message: 'NOT IMPLEMENTED - user detail' });
-};
-
 // Handle User create on POST.
 exports.user_create_post = async function (req: Request, res: Response) {
     try {
