@@ -22,3 +22,25 @@ exports.find_races = async (req: Request, res: Response) => {
 		res.status(401).send({ message: err.message });
 	}
 };
+
+exports.create_races = async function (req: Request, res: Response) {
+	try {
+		const userToken = await jwtUtil.checkToken(req);
+
+		if (userToken.message) {
+			throw Error(userToken.message);
+		}
+
+		let race = req.body;
+
+		if (!race.name || !race.questions) {
+			throw Error('Error: missing params ');
+		}
+
+		/*race = await triviaModel.createTrivia(userToken.firebase_uid,triviaCompleta, code);*/
+
+		res.status(200).send({ message: 'Status OK', race });
+	} catch (err: any) {
+		res.status(501).send({ message: err.message });
+	}
+};
