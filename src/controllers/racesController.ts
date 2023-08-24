@@ -26,6 +26,7 @@ exports.find_races = async (req: Request, res: Response) => {
 exports.create_races = async function (req: Request, res: Response) {
 	try {
 		const userToken = await jwtUtil.checkToken(req);
+		console.log(userToken);
 
 		if (userToken.message) {
 			throw Error(userToken.message);
@@ -33,11 +34,11 @@ exports.create_races = async function (req: Request, res: Response) {
 
 		let race = req.body;
 
-		if (!race.name || !race.questions) {
+		if (!race.nombreCarrera || !race.distanciaCarrera || !race.fechaCarrera || !race.lugarCarrera) {
 			throw Error('Error: missing params ');
 		}
 
-		/*race = await triviaModel.createTrivia(userToken.firebase_uid,triviaCompleta, code);*/
+		race = await racesModel.createRace(userToken.user, race);
 
 		res.status(200).send({ message: 'Status OK', race });
 	} catch (err: any) {

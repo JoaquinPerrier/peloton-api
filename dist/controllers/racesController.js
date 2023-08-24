@@ -29,3 +29,23 @@ exports.find_races = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         res.status(401).send({ message: err.message });
     }
 });
+exports.create_races = function (req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const userToken = yield jwtUtil.checkToken(req);
+            console.log(userToken);
+            if (userToken.message) {
+                throw Error(userToken.message);
+            }
+            let race = req.body;
+            if (!race.nombreCarrera || !race.distanciaCarrera || !race.fechaCarrera || !race.lugarCarrera) {
+                throw Error('Error: missing params ');
+            }
+            race = yield racesModel.createRace(userToken.user, race);
+            res.status(200).send({ message: 'Status OK', race });
+        }
+        catch (err) {
+            res.status(501).send({ message: err.message });
+        }
+    });
+};

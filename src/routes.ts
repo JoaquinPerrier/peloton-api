@@ -18,8 +18,8 @@ router.get('/api/races', (_req: Request, res: Response): void => {
 	racesController.find_races(_req, res);
 });
 
-router.get('/api/races', (_req: Request, res: Response): void => {
-	racesController.find_races(_req, res);
+router.post('/api/races', (_req: Request, res: Response): void => {
+	racesController.create_races(_req, res);
 });
 
 export default router;

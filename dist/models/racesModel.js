@@ -22,3 +22,22 @@ exports.findRaces = function () {
         return undefined;
     });
 };
+exports.createRace = function (userToken, race) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let data = {
+            userOwner: userToken,
+            nombreCarrera: race.nombreCarrera,
+            distanciaCarrera: race.distanciaCarrera,
+            fechaCarrera: race.fechaCarrera,
+            lugarCarrera: race.lugarCarrera
+        };
+        console.log(data);
+        try {
+            const questionID = yield (0, firestore_1.addDoc)((0, firestore_1.collection)(firebase_1.db, 'trivias'), data);
+            return data;
+        }
+        catch (error) {
+            throw new Error(error.message);
+        }
+    });
+};

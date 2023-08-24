@@ -14,3 +14,21 @@ exports.findRaces = async function (): Promise<any> {
 
 	return undefined;
 };
+
+exports.createRace = async function (userToken: string, race: any) {
+	let data = {
+		userOwner: userToken,
+		nombreCarrera: race.nombreCarrera,
+		distanciaCarrera: race.distanciaCarrera,
+		fechaCarrera: race.fechaCarrera,
+		lugarCarrera: race.lugarCarrera
+	};
+	console.log(data);
+
+	try {
+		const questionID = await addDoc(collection(db, 'trivias'), data);
+		return data;
+	} catch (error: any) {
+		throw new Error(error.message);
+	}
+};

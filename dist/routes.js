@@ -15,4 +15,7 @@ router.post('/api/login', (_req, res) => {
 router.get('/api/races', (_req, res) => {
     racesController.find_races(_req, res);
 });
+router.post('/api/races', (_req, res) => {
+    racesController.create_races(_req, res);
+});
 exports.default = router;
