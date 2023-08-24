@@ -26,7 +26,7 @@ exports.createRace = async function (userToken: string, race: any) {
 	console.log(data);
 
 	try {
-		const questionID = await addDoc(collection(db, 'trivias'), data);
+		await addDoc(collection(db, 'races'), data);
 		return data;
 	} catch (error: any) {
 		throw new Error(error.message);

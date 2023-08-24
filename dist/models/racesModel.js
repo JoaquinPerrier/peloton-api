@@ -33,7 +33,7 @@ exports.createRace = function (userToken, race) {
         };
         console.log(data);
         try {
-            const questionID = yield (0, firestore_1.addDoc)((0, firestore_1.collection)(firebase_1.db, 'trivias'), data);
+            yield (0, firestore_1.addDoc)((0, firestore_1.collection)(firebase_1.db, 'races'), data);
             return data;
         }
         catch (error) {
